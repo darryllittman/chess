@@ -14,9 +14,8 @@ class Display
   end
 
   def user_input
-
     @cursor_pos = get_input
-
+    @selected = true
   end
 
   def render
