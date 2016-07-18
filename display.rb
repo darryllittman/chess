@@ -9,12 +9,14 @@ class Display
 
   def initialize(board)
     @board = board
-    @cursor = [0, 0]
+    @cursor_pos = [4,4]
     @selected = false
   end
 
   def user_input
-    get_input
+
+    @cursor_pos = get_input
+
   end
 
   def render
@@ -39,7 +41,7 @@ end
 if __FILE__ == $PROGRAM_NAME
 
   a = Display.new(Board.new)
-  a.render
+  p a.get_input
 
 
 
