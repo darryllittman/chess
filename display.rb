@@ -5,18 +5,19 @@ require 'byebug'
 
 class Display
   include Cursorable
-  attr_reader :board, :cursor, :selected
+  attr_reader :board, :cursor_pos, :selected
 
   def initialize(board)
     @board = board
-    @cursor_pos = [0,0]
+    @cursor_pos = [4, 4]
     @selected = false
   end
 
-  def user_input
-    @cursor_pos = get_input
-    @selected = true
-  end
+  # def user_input
+  #   @cursor_pos = get_input
+  #   # @selected = true
+  #   render
+  # end
 
   def render
     to_display = []
@@ -24,7 +25,6 @@ class Display
     @board.grid.each_with_index do |row, i|
       to_display = []
       row.each_with_index do |col, j|
-        # debugger
         if [i,j] == @cursor_pos
           to_display << @board[[i, j]].symbol.colorize(:red)
         else
@@ -45,6 +45,12 @@ end
 if __FILE__ == $PROGRAM_NAME
 
   a = Display.new(Board.new)
-  a.render
+  until a.get_input
 
+    a.get_input
+    a.render
+    p a.selected
+  end
+
+  p a.selected
 end
