@@ -6,7 +6,6 @@ class Queen < Piece
   include Slideable
 
   def initialize(color, board, position)
-    @vertical = true
     @horizontal = true
     @diagonal = true
     super

@@ -26,10 +26,7 @@ module Slideable
       possible_moves += horizontal_dirs
     end
 
-
     possible_moves += diagonal_dirs if @diagonal
-
-
     possible_moves
   end
 
@@ -37,6 +34,8 @@ module Slideable
   def move_dirs
 
   end
+
+
 
   def horizontal_dirs
     dx, dy = @position

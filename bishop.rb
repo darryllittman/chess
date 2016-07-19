@@ -1,5 +1,17 @@
+require_relative 'slideable'
+require_relative 'piece'
+require_relative 'board'
+
 class Bishop < Piece
-  include 'slideable.rb'
+  include Slideable
+
+
+  def initialize(color, board, position)
+    @diagonal = true
+
+    super
+  end
+
   def symbol
   end
 

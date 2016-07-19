@@ -4,6 +4,13 @@ require_relative 'slideable'
 
 class Rook < Piece
   include Slideable
+
+  def initialize(color, board, position)
+    @horizontal = true
+    
+    super
+  end
+
   def symbol
   end
 
