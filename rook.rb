@@ -1,5 +1,9 @@
+require_relative 'board'
+require_relative 'piece'
+require_relative 'slideable'
+
 class Rook < Piece
-  include 'slideable.rb'
+  include Slideable
   def symbol
   end
 
