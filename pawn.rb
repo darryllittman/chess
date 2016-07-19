@@ -2,6 +2,7 @@ require_relative 'piece'
 require_relative 'stepable'
 require_relative 'slideable'
 require_relative 'board'
+require 'byebug'
 
 class Pawn < Piece
 include Stepable
@@ -13,7 +14,7 @@ include Slideable
   end
 
   def moves
-    forward_dir
+    forward_dir.concat(side_attacks)
   end
 
 
@@ -51,5 +52,20 @@ include Slideable
   end
 
   def side_attacks
+    vert = []
+    dx, dy = @position
+
+    b_right = @board[[dx + 1, dy + 1]].class
+    b_left = @board[[dx + 1, dy - 1]].class
+    w_right = @board[[dx - 1, dy + 1]].class
+    w_left = @board[[dx -  1, dy - 1]].class
+
+    vert << [dx+1, dy+1] if b_right != EmptyPiece && :black
+    vert << [dx+1, dy-1] if b_left != EmptyPiece && :black
+
+    vert << [dx-1, dy+1] if w_left != EmptyPiece && :white
+    vert << [dx-1, dy-1] if w_left != EmptyPiece && :white
+
+    vert
   end
 end

@@ -1,5 +1,8 @@
 require_relative 'empty_piece'
 require_relative 'piece'
+require_relative 'king'
+require_relative 'pawn'
+
 class Board
   attr_accessor :board, :grid
 
