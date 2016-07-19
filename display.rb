@@ -2,6 +2,7 @@ require 'colorize'
 require_relative 'cursorable'
 require_relative 'board'
 require 'byebug'
+require 'knight'
 
 class Display
   include Cursorable
@@ -9,15 +10,9 @@ class Display
 
   def initialize(board)
     @board = board
-    @cursor_pos = [4, 4]
+    @cursor_pos = [0, 0]
     @selected = false
   end
-
-  # def user_input
-  #   @cursor_pos = get_input
-  #   # @selected = true
-  #   render
-  # end
 
   def render
     to_display = []
@@ -45,12 +40,13 @@ end
 if __FILE__ == $PROGRAM_NAME
 
   a = Display.new(Board.new)
-  until a.get_input
+  # until a.get_input
+  #
+  #   a.get_input
+  #   a.render
+  #   p a.selected
+  # end
+  knight = Knight.new("white", Board.new, [0,0])
+  p knight.valid_moves
 
-    a.get_input
-    a.render
-    p a.selected
-  end
-
-  p a.selected
 end
