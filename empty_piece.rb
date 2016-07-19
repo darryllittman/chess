@@ -10,7 +10,7 @@ class EmptyPiece
   end
 
   def color
-
+    @color = nil
   end
 
   def symbol

@@ -18,8 +18,6 @@ module Slideable
   }
 
   def moves
-    # dx, dy = @position
-    # grow_unblocked_moves_in_dir(dx, dy)
     possible_moves = []
 
     if @horizontal
@@ -41,18 +39,54 @@ module Slideable
     dx, dy = @position
     hor_moves = []
     (dx...7).each do |i|
-      hor_moves << [i + 1, dy]
+        if @board[[i + 1, dy]].class != EmptyPiece
+          if @board[[i + 1, dy]].color != @color
+            hor_moves << [i + 1, dy]
+            break
+          else
+            break
+          end
+        end
+
+        hor_moves << [i + 1, dy]
     end
 
     (-1...dx-1).each do |i|
+      if @board[[i + 1, dy]].class != EmptyPiece
+        if @board[[i + 1, dy]].color != @color
+          hor_moves << [i + 1, dy]
+          break
+        else
+          break
+        end
+      end
+
       hor_moves << [i + 1, dy]
     end
 
     (dy...7).each do |i|
+      if @board[[dx, 1 + i]].class != EmptyPiece
+        if @board[[dx, 1 + i]].color != @color
+          hor_moves << [dx, 1 + i]
+          break
+        else
+          break
+        end
+      end
+
       hor_moves << [dx, i + 1]
     end
 
     (-1...dy-1).each do |i|
+      if @board[[dx, 1 + i]].class != EmptyPiece
+        if @board[[dx, 1 + i]].color != @color
+          hor_moves << [dx, 1 + i]
+          break
+        else
+          break
+        end
+      end
+
       hor_moves << [dx, i + 1]
     end
 
@@ -61,55 +95,71 @@ module Slideable
 
   def diagonal_dirs
     dx, dy = @position
-    # @moves ||= []
     diag_moves = []
     i = 1
-    #down_right
+
+
     while (dx + i).between?(0, 7) && (dy + i).between?(0, 7)
-      diag_moves << [(dx + i), (dy + i)]
+      if @board[[dx + i, dy + i]].class != EmptyPiece
+        if @board[[dx + i, dy + i]].color != @color
+          diag_moves << [dx + i, dy + i]
+          break
+        else
+          break
+        end
+      end
+
+      diag_moves << [dx + i, dy + i]
       i += 1
     end
-    # #up_left
     i = 1
+
+
     while (dx - i).between?(0, 7) && (dy - i).between?(0, 7)
-      diag_moves << [(dx - i), (dy - i)]
+      if @board[[dx - i, dy - i]].class != EmptyPiece
+        if @board[[dx - i, dy - i]].color != @color
+          diag_moves << [dx - i, dy - i]
+          break
+        else
+          break
+        end
+      end
+
       i += 1
     end
 
-    #up_right
+
     i = 1
     while (dx - i).between?(0, 7) && (dy + i).between?(0, 7)
-      diag_moves << [(dx - i), (dy + i)]
+      if @board[[dx - i, dy + i]].class != EmptyPiece
+        if @board[[dx - i, dy + i]].color != @color
+          diag_moves << [dx - i, dy + i]
+          break
+        else
+          break
+        end
+      end
+
       i += 1
     end
-    #down_left
+
     i = 1
     while (dx + i).between?(0, 7) && (dy - i).between?(0, 7)
-      diag_moves << [(dx + i), (dy - i)]
+      if @board[[dx + i, dy - i]].class != EmptyPiece
+        if @board[[dx + i, dy - i]].color != @color
+          diag_moves << [dx + i, dy - i]
+          break
+        else
+          break
+        end
+      end
       i += 1
     end
+
 
     diag_moves.uniq
   end
 
   def grow_unblocked_moves_in_dir(dx, dy)
-    # moves = []
-    # (dx...7).each do |i|
-    #   moves << [i + 1, dy]
-    # end
-    #
-    # (0...dx-1).each do |i|
-    #   moves << [i + 1, dy]
-    # end
-    #
-    # (dy...7).each do |i|
-    #   moves << [dx, i + 1]
-    # end
-    #
-    # (0...dy-1).each do |i|
-    #   moves << [dx, i + 1]
-    # end
-    #
-    # moves
   end
 end

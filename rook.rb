@@ -7,7 +7,7 @@ class Rook < Piece
 
   def initialize(color, board, position)
     @horizontal = true
-    
+    @diagonal = false
     super
   end
 
