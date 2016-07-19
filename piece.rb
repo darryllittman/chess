@@ -1,10 +1,11 @@
 require 'colorize'
 
+
 class Piece
   def initialize(color, board, position)
     @color = color
     @board = board
-    @position = postion
+    @position = position
   end
 
   def to_s

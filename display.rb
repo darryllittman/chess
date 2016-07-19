@@ -2,7 +2,8 @@ require 'colorize'
 require_relative 'cursorable'
 require_relative 'board'
 require 'byebug'
-require 'knight'
+require_relative 'knight'
+require_relative 'piece'
 
 class Display
   include Cursorable
