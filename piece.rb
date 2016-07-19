@@ -1,3 +1,5 @@
+require 'colorize'
+
 class Piece
   def initialize(color, board, position)
     @color = color

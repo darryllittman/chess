@@ -1,5 +1,6 @@
 require 'singleton'
 require_relative 'piece'
+require 'colorize'
 
 class EmptyPiece
   include Singleton
