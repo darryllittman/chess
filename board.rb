@@ -1,6 +1,5 @@
 require_relative 'empty_piece'
 require_relative 'piece'
-require_relative 'king'
 require_relative 'pawn'
 
 class Board
@@ -23,6 +22,12 @@ class Board
     x, y = pos
     @grid[x][y] = val
   end
+
+  def move_piece!(from_pos, to_pos)
+    self[to_pos] = self[from_pos]
+    self[from_pos] = EmptyPiece.instance
+  end
+
 end
 
 
