@@ -18,7 +18,7 @@ class King < Piece
   def symbol
   end
 
-  def move_diffs
+  def moves
     moves = []
 
     valid = MOVES.map do |direction, coords|
